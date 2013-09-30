@@ -4,15 +4,10 @@
     android:layout_height="match_parent"
 	android:orientation="vertical"
     tools:context=".ToDoListActivity" >
-       <fragment 
-    	    android:id="@+id/listFragment"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-    	    class="evertsd.todo.ListFragment"></fragment>
-       <fragment
-    	    android:id="@+id/detailFragment"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
-    	    class="evertsd.todo.DetailFragment"></fragment>
+       <LinearLayout android:id="@+id/activity_to_do_fragment_holder"
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent"
+           android:orientation="horizontal"
+           />
 </LinearLayout>
 

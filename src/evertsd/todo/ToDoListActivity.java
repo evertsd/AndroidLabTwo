@@ -6,6 +6,8 @@ import evertsd.todo.ListFragment.OnSelectedItemListener;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -19,6 +21,10 @@ public class ToDoListActivity extends Activity implements OnSelectedItemListener
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		ListFragment fragment = new ListFragment();
+		
+		replaceFragment(fragment);
+		
 		setContentView(R.layout.activity_to_do_list);
 	}
 
@@ -31,9 +37,30 @@ public class ToDoListActivity extends Activity implements OnSelectedItemListener
 	
 	public void onToDoListItemSelected(String link)
 	{
-		DetailFragment fragment = (DetailFragment)getFragmentManager().findFragmentById(R.id.detailFragment);
-		if(fragment != null && fragment.isInLayout())
-			fragment.setText(link);
+		DetailFragment fragment = new DetailFragment();
+		
+		Bundle bundle = new Bundle();
+		
+		bundle.putString("text", link);
+		
+		fragment.setArguments(bundle);
+		
+		replaceFragment(fragment);
+	}
+	
+	public void replaceFragment(Fragment fragment)
+	{
+		fragment.setRetainInstance(false);
+		
+		FragmentTransaction transaction = this.getFragmentManager().beginTransaction();
+		
+		transaction.replace(R.id.activity_to_do_fragment_holder, fragment);
+		
+		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+		
+		transaction.addToBackStack(null);
+		
+		transaction.commit();
 	}
 	
 
