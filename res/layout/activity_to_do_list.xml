@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:orientation="vertical"
+    tools:context=".ToDoListActivity" >
+       <fragment 
+    	    android:id="@+id/listFragment"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    class="evertsd.todo.ListFragment"></fragment>
+       <fragment
+    	    android:id="@+id/detailFragment"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    class="evertsd.todo.DetailFragment"></fragment>
+</LinearLayout>
+
