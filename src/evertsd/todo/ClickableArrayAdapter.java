@@ -46,7 +46,6 @@ public class ClickableArrayAdapter extends ArrayAdapter {
 		final Button button = (Button) rowView.findViewById(R.id.rowName);
 		
 		button.setText(values.get(position));
-		Log.d("GetView: ", (String)button.getText());
 		
 		button.setOnClickListener(new OnClickListener()
 		{
@@ -54,7 +53,6 @@ public class ClickableArrayAdapter extends ArrayAdapter {
 			public void onClick(View v)
 			{
 				listener.onToDoListItemSelected((String)((Button)v).getText());
-				Log.d("ButtonText: ", (String)((Button)v).getText());
 			}
 		});
 		

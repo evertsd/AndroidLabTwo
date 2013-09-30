@@ -29,9 +29,6 @@ public class ListFragment extends Fragment {
 		
 		ListView myListView = (ListView)view.findViewById(R.id.myListView);
 		
-		if(todoItems == null)
-			todoItems = new ArrayList<String>();
-		
 		final ClickableArrayAdapter aa = new ClickableArrayAdapter(this.getActivity(), android.R.layout.simple_list_item_1, todoItems);
 	
 		myListView.setAdapter(aa);
@@ -47,6 +44,7 @@ public class ListFragment extends Fragment {
 	{
 		public void onToDoListItemSelected(String item);
 		public void replaceFragment(Fragment fragment);
+		public ArrayList<String> getItems();
 	}
 	
 	public void onAttach(Activity activity)
@@ -55,6 +53,7 @@ public class ListFragment extends Fragment {
 		if(activity instanceof OnSelectedItemListener)
 		{
 			listener = (OnSelectedItemListener)activity;
+			todoItems = ((OnSelectedItemListener)activity).getItems();
 		}
 	}
 	

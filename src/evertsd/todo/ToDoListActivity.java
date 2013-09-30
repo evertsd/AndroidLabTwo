@@ -17,9 +17,15 @@ import android.widget.ListView;
 
 public class ToDoListActivity extends Activity implements OnSelectedItemListener{
 
+	ArrayList<String> todoItems;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		if (savedInstanceState != null) {
+		    todoItems = savedInstanceState.getStringArrayList("todoItems");
+		}
 		
 		ListFragment fragment = new ListFragment();
 		
@@ -63,5 +69,17 @@ public class ToDoListActivity extends Activity implements OnSelectedItemListener
 		transaction.commit();
 	}
 	
+	public ArrayList<String> getItems()
+	{
+		if(todoItems == null)
+			todoItems = new ArrayList<String>();
+		return todoItems;
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle savedInstanceState) {
+		  super.onSaveInstanceState(savedInstanceState);
+		  savedInstanceState.putStringArrayList("todoItems", todoItems);
+	}
 
 }
